@@ -13,7 +13,10 @@ export default function Home() {
   }, []);
 
   const [portfolio, setPortfolio] = useState([]);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState({
+    open: false,
+    portfolio_id: null
+  });
 
   const images = [
     "/imgs/widen_1220x0.jpg",
@@ -69,76 +72,36 @@ export default function Home() {
       <h2 className="text-2xl font-bold mb-6" id="projects">
           Portfólio
       </h2>
-      <div className="relative w-full overflow-hidden py-10 items-center">
 
-      {/* Botão Anterior */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-black/50 text-white z-20"
-      >
-        ◀
-      </button>
-
-      {/* Wrapper das imagens */}
-      <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{
-          transform: `translateX(-${index * 300}px)` // 300 = largura do card
-        }}
-      >
-        {images.map((src, i) => (
-          <div
-            key={i}
-            className="w-[280px] h-[280px] mx-3 flex-shrink-0 transition-transform duration-300 hover:scale-110"
+      <div className="relative w-full bg-zinc-900/70 flex flex-row justify-center items-center gap-2 p-4">
+        {portfolio.map((item) => (
+          <button 
+            onClick={() => setModal({...modal, open: true, portfolio_id: item.id})} key={item.id}
+            className="transition-transform duration-300 hover:scale-110 cursor-pointer"
           >
-            <button onClick={() => setModal(true)} className="cursor-pointer">
+
               <Image
-                src={src}
-                alt={`img-${i}`}
+                src={`${process.env.NEXT_PUBLIC_API_STORAGE+item.image_path }`}
+                alt={item.title}
                 width={600}
                 height={600}
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </button>
-          </div>
-        ))}
-      </div>
+                className="w-[200px] aspect-[1/1] object-cover rounded-xl"
+                unoptimized
+                />
 
-      {/* Botão Próximo */}
-      <button
-        onClick={handleNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-black/50 text-white z-20"
-      >
-        ▶
-      </button>
-
-    </div>
-
-      <div className="relative w-full bg-zinc-900/70 flex flex-row justify-center items-center gap-4">
-        {portfolio.map((item) => (
-          <div key={item.id}>
-
-            <Image
-              src={`${process.env.NEXT_PUBLIC_API_STORAGE+item.image_path }`}
-              alt={item.title}
-              width={600}
-              height={600}
-              className="w-[200px] h-[120px] object-cover rounded-xl"
-              unoptimized
-              />
-          </div>
+          </button>
         ))}
       </div>
     </div>
     <VerticalSpace />
 
-    {modal && (
+    {modal.open && (
       
-      <div className="fixed w-full h-full bg-black/50 inset-0 flex justify-center items-center z-50" onClick={() => setModal(false)}>
+      <div className="fixed w-full h-full bg-black/50 inset-0 flex justify-center items-center z-50" onClick={() => setModal({...modal, open: false, portfolio_id: null})}>
         <div className="flex flex-col w-[90%] h-[90%] bg-linear-to-r from-zinc-950 via-zinc-900 to-zinc-800 border border-zinc-900 p-4">
           <div className="flex flex-col sm:flex-row h-[100%]">
           <div className="absolute top-2 right-2 flex justify-end mb-4 text-white">
-            <button onClick={() => setModal(false)} className="cursor-pointer">
+            <button onClick={() => setModal({...modal, open: false, portfolio_id: null})} className="cursor-pointer">
               <CloseIcon />
             </button>
           </div>
