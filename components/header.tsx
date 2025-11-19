@@ -33,6 +33,12 @@ export default function Header(){
                             </div>
                         </nav>
                     </div>
+                    <div className="w-full h-full flex flex-col text-zinc-200 items-center justify-center">
+                        <a href="#projects" className="flex flex-row items-center justify-center w-[150px] p-5 bg-white/10 border border-white text-white text-sm transition duration-300 hover:bg-white/20 hover:scale-105 hover:text-black rounded-full font-bold">
+                            Ver Projetos
+                        </a>
+
+                    </div>
                 </div>
             </div>
         
