@@ -14,9 +14,9 @@ export default function AboutMe(){
                     <Image
                         src="/imgs/deadpool.jfif"
                         alt="Foto de perfil"                    
-                        className="w-full object-cover aspect-square rounded-full"
-                        width={900}
-                        height={900}
+                        className="w-[300px] object-cover aspect-square rounded-full"
+                        width={1000}
+                        height={1000}
                     />
                 </div>
                 <div className="w-[50%]">
