@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <>
-    <div className="flex flex-col w-full max-w-6xl mx-auto text-white pt-4">
+    <div className="flex flex-col w-full max-w-6xl mx-auto text-white pt-4 px-4 sm:px-0">
       <h2 className="text-2xl font-bold mb-6" id="projects">
           Portfólio
       </h2>
@@ -136,7 +136,7 @@ export default function Home() {
                   setImages(null); 
                   setPortfolio(null);
                 }}
-                className="cursor-pointer">
+                className="cursor-pointer w-10 h-10 flex aspect-[1/1] bg-zinc-600 rounded-full items-center justify-center">
                 <CloseIcon />
               </button>
             </div>

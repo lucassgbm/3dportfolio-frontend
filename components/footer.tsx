@@ -8,7 +8,7 @@ export default function Footer(){
                 <div className="absolute inset-0 ">
 
                     <div className="flex flex-col text-zinc-200">
-                        <nav className="w-full grid grid-cols-3 h-[90px] justify-between gap-2 p-6 items-center">
+                        <nav className="w-full grid grid-cols-1 sm:grid-cols-3 h-[90px] justify-between gap-2 p-6 items-center">
                         
                             <h1 className="text-lg">3D Portfólio</h1>
                             <ul className="flex flex-row gap-6">
